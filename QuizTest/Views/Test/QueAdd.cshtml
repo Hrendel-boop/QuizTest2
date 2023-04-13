@@ -1,0 +1,113 @@
+﻿@model QuizTest.Models.ViewModels.TestVM
+
+<form method="post" asp-action="CreatePost">
+    <div class="border p-4">
+
+
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Создать викторину</h2>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                @*<div class="form-group row" style="margin-bottom:5px">
+                    <div class="col-4">
+                        <label>Название</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Test.Name" class="form-control w-100" />
+                        <span asp-validation-for="Test.Name" class="text-danger"></span>
+                    </div>
+                </div>*@
+@*
+                <div class="form-group row" style="margin-bottom:5px">
+                    <div class="col-4">
+                        <label>Количество вопросов</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="queCount" class="form-control w-100 " onchange="addButton()" />
+                        <span asp-validation-for="queCount" class="text-danger"></span>
+                        @*<a asp-action="CreateQueChange" id="newButton" class="btn btn-success" style="display:none; margin-top:10px;">
+                        <i class="fa-solid fa-check"></i>
+                        </a>*@
+                        @*<input type="submit" id="newButton" class="btn btn-success w-30" style="display:none; margin-top:10px;" value="Изменить" />*@
+                    </div>
+
+                </div>
+        <input hidden asp-for="Test.Name" class="form-control w-100" />
+        <input hidden asp-for="Test.Id" class="form-control w-100" />
+        <input hidden asp-for="Test.Image" class="form-control w-100" />
+
+                <div class="form-group row" >
+                    @* <div class="col-4">
+                    Image
+                    </div>
+                    <div class="col-8">
+                    <input type="file" name="files" id="uploadBox" multiple asp-for="Test.Image" class="form-control w-100" />
+                    </div>*@
+
+                    @for (int i = 0; i < Model.queCount; i++)
+                    {
+
+                    int queNum = i + 1;
+
+
+                    <div class="form-group row" style="">
+                    <div class="col-4">
+                    <label>Вопрос @queNum</label>
+                    </div>
+                    <div class="col-8">
+                    <input asp-for="Question.Name[i]" class="form-control w-100" />
+                    <span asp-validation-for="Question.Name[i]" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                    <label>Правильный ответ</label>
+                    </div>
+                    <div class="col-8">
+                    <input asp-for="Question.CorrectAnswer[i]" class="form-control w-100" />
+                    <span asp-validation-for="Question.CorrectAnswer[i]" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                    <label>Неправильный ответ</label>
+                    </div>
+                    <div class="col-8" style="margin-bottom:10px" >
+                    <input asp-for="Question.IncorrectAnswer[i]" class="form-control w-100" />
+                    <span asp-validation-for="Question.IncorrectAnswer[i]" class="text-danger"></span>
+                    </div>
+                    </div>
+                    <hr />
+                    }
+
+                    <div class="form-group row">
+                        <div class="col-8 offset-4 row">
+
+                            <div class="col">
+                                <input type="submit" class="btn btn-success w-100" value="Сохранить" />
+                            </div>
+                            <div class="col">
+                                <a asp-action="Create" class="btn btn-info w-100">
+                                    Назад
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    @* Keep this empty *@
+                </div>
+            </div>
+      
+</form>
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        function addButton() {
+            document.getElementById("newButton").style.display = "inline-block";
+        }
+    </script>
+    }
+
