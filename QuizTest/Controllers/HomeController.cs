@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using QuizTest.Models;
+using QuizTest.Models.ViewModels;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace QuizTest.Controllers
 {
@@ -23,6 +25,31 @@ namespace QuizTest.Controllers
             IEnumerable<Test> objList = _db.Test;
             return View(objList);
         }
+
+        public IActionResult Details(int id)
+        {
+            var obj = _db.Test.Find(id);
+
+            var homeVM = new HomeVM
+            {
+                Question = JsonSerializer.Deserialize<Question>(obj.QuestionsSerialized),
+            };
+
+            return View(homeVM);
+        }
+
+        public IActionResult DetailsPost(HomeVM homeVM)
+        {
+            homeVM.QuestionCount++;
+
+            if (homeVM.QuestionCount == homeVM.Question.Name.Length)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View("Details", homeVM);
+        }
+
 
         public IActionResult Privacy()
         {
