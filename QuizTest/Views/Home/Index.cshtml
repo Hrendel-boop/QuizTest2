@@ -1,8 +1,31 @@
-﻿@{
+﻿@model IEnumerable<QuizTest.Models.Test>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@foreach (var test in Model)
+{   
+<div class="col-lg-3 col-md-5 pb-4 filter @test.Name.Replace(' ', '_')">
+    <!-- Card-->
+    <div class="card bg-white rounded shadow-sm" style="border:1px solid #222">
+            <img class="card-img-top img-fluid d-block mx-auto mb-3" src="@Constants.ImagePath@test.Image" alt="Card image cap"
+                 style=" border-radius:5px; border:1px solid #bbb;">
+        <div class="card-body p-1 px-3 row">
+            <div class="col-7 " style="margin-bottom:13px"><label style="text-transform:uppercase; font-weight:bold; font-size:18px" class="float-left">@test.Name</label></div>            
+        <div class="card-body px-3 pt-3 pb-1 row">
+        </div>
+
+            <div class="col-6 border-0">
+                <span class="badge p-2 border w-100" style="background-color:aliceblue; color:black"></span>
+            </div>
+            @*<div class="col-12 pt-2" style="font-size:13px; text-align:justify">
+                <p>@Model.ShortDescription</p>
+            </div>*@
+            <div class="col-12 p-1">
+                    <a asp-action="Details" asp-route-id="@test.Id" class="btn btn-primary form-control btn-sm p-2" style="height:40px;font-weight:bold;">ПРОЙТИ ТЕСТ</a>
+            </div>
+        </div>
+    </div>
 </div>
+}

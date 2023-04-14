@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using QuizTest.Models;
 using QuizTest.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.DotNet.Scaffolding.Shared;
 
 namespace QuizTest.Controllers
 {
@@ -100,11 +102,38 @@ namespace QuizTest.Controllers
         // POST: FilmsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(TestVM testVM)
+        public ActionResult Edit(TestVM testVM, string viewName)
         {
-            if (true)
+            if (viewName=="QueEdit")
             {
+                testVM.Test.QuestionsSerialized = JsonSerializer.Serialize(testVM.Question);
+                _db.Test.Update(testVM.Test);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            var files = HttpContext.Request.Form.Files;
 
+            if (files.Count > 0)
+            {
+                string webRootPath = _webHostEnvironment.WebRootPath;
+
+                var objFromDb = _db.Test.AsNoTracking().FirstOrDefault(u => u.Id == testVM.Test.Id);
+                string upload = webRootPath + Constants.ImagePath;
+                string fileName = Guid.NewGuid().ToString();
+                string extension = Path.GetExtension(files[0].FileName);
+
+                var oldFile = Path.Combine(upload, objFromDb.Image);
+                if (System.IO.File.Exists(oldFile))
+                {
+                    System.IO.File.Delete(oldFile);
+                }
+
+                using (var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create))
+                {
+                    files[0].CopyTo(fileStream);
+                }
+
+                testVM.Test.Image = fileName + extension;
             }
             return View("QueEdit", testVM);
         }
@@ -112,22 +141,34 @@ namespace QuizTest.Controllers
         // GET: FilmsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var obj = _db.Test.Find(id);
+            return View(obj);
         }
 
         // POST: FilmsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeletePost(int id)
         {
-            try
+            var obj = _db.Test.Find(id);
+
+            if (obj == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
+
+            string upload = _webHostEnvironment.WebRootPath + Constants.ImagePath;
+            var oldFile = Path.Combine(upload, obj.Image);
+
+            if (System.IO.File.Exists(oldFile))
             {
-                return View();
+                System.IO.File.Delete(oldFile);
             }
+
+            _db.Remove(obj);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));          
         }
     }
 }

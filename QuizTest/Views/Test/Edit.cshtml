@@ -2,7 +2,9 @@
 
 <form method="post" asp-action="Edit" enctype="multipart/form-data">
     <div class="border p-4">
+        <input hidden asp-for="Test.Id" class="form-control w-100" />
         
+
         <input hidden asp-for="Question" class="form-control w-100" />
         @for (int i = 0; i < Model.queCount; i++)
         {            
@@ -50,37 +52,7 @@
                         <input formenctype="multipart/form-data" type="file" name="files" id="uploadBox" multiple asp-for="Test.Image" class="form-control w-100" />
                         <img id="vImg" src="@Constants.ImagePath@Model.Test.Image" width="220" style="border-radius:5px; border:1px solid #bbb; margin-top:7px; margin-bottom:10px;" />
                     </div>
-
-                    @*@for (int i = 0; i < Model.queCount; i++)
-                    {
-
-                    int queNum = i + 1;
-
-
-                    <div class="form-group row" style="margin-bottom:5px">
-                    <div class="col-4">
-                    <label>Вопрос @queNum</label>
-                    </div>
-                    <div class="col-8">
-                    <input asp-for="Question.Name[i]" class="form-control w-100" />
-                    <span asp-validation-for="Question.Name[i]" class="text-danger"></span>
-                    </div>
-                    <div class="col-4">
-                    <label>Правильный ответ</label>
-                    </div>
-                    <div class="col-8">
-                    <input asp-for="Question.CorrectAnswer[i]" class="form-control w-100" />
-                    <span asp-validation-for="Question.CorrectAnswer[i]" class="text-danger"></span>
-                    </div>
-                    <div class="col-4">
-                    <label>Неправильный ответ</label>
-                    </div>
-                    <div class="col-8">
-                    <input asp-for="Question.IncorrectAnswer[i]" class="form-control w-100" />
-                    <span asp-validation-for="Question.IncorrectAnswer[i]" class="text-danger"></span>
-                    </div>
-                    </div>
-                    }*@
+                   
 
                     <div class="form-group row">
                         <div class="col-8 offset-4 row">

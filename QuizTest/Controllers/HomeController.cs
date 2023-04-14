@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using QuizTest.Models;
 using System.Diagnostics;
 
@@ -7,15 +8,20 @@ namespace QuizTest.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _db;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
+            _db = db;
+            _webHostEnvironment= webHostEnvironment;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Test> objList = _db.Test;
+            return View(objList);
         }
 
         public IActionResult Privacy()

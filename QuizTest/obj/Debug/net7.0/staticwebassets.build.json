@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TNXS616YxOWKuM00EUDojkEdm3kp4/k84IPWCE1n67k=",
+  "Hash": "r8L+PlGRzpIJIk7SS7vX7BAYZWDYmy9oQ2mWs/Fug6g=",
   "Source": "QuizTest",
   "BasePath": "_content/QuizTest",
   "Mode": "Default",
@@ -85,12 +85,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\images\\04a67454-21cd-42cd-aa5b-2768920061d0.jpg",
+      "Identity": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\images\\da201398-ddd3-475e-a6da-2f0f8f0bbca3.png",
       "SourceId": "QuizTest",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\",
       "BasePath": "_content/QuizTest",
-      "RelativePath": "images/04a67454-21cd-42cd-aa5b-2768920061d0.jpg",
+      "RelativePath": "images/da201398-ddd3-475e-a6da-2f0f8f0bbca3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,41 +99,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\04a67454-21cd-42cd-aa5b-2768920061d0.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\images\\6e0d947b-1ac5-4e60-be9e-54c01b12cae6.jpg",
-      "SourceId": "QuizTest",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\",
-      "BasePath": "_content/QuizTest",
-      "RelativePath": "images/6e0d947b-1ac5-4e60-be9e-54c01b12cae6.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\6e0d947b-1ac5-4e60-be9e-54c01b12cae6.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\images\\f67892a2-69cc-4368-a6bf-64b1223aba94.jpg",
-      "SourceId": "QuizTest",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\",
-      "BasePath": "_content/QuizTest",
-      "RelativePath": "images/f67892a2-69cc-4368-a6bf-64b1223aba94.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\f67892a2-69cc-4368-a6bf-64b1223aba94.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\da201398-ddd3-475e-a6da-2f0f8f0bbca3.png"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\QuizTest\\QuizTest\\wwwroot\\js\\site.js",
